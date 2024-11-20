@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lab Locator</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="search-container">
+        
+<div class="search-box">
+    <i class="fas fa-search search-icon"></i>
+    <input type="text" id="search" placeholder="Search for labs...">
+    <button class="search-button" onclick="searchLabs()">Search</button>
+    <div id="recentSearches" class="recent-searches"></div>
+</div>
+
+
+    </div>
+    <div id="recentSearches" class="recent-searches"></div>
+    <div id="map"></div>
+    <div class="bottom-buttons">
+        <button class="action-button"><i class="fas fa-camera"></i><span>Camera</span></button>
+        <button class="action-button" data-action="lab-finder">
+            <i class="fas fa-flask"></i>
+            <span>Lab Finder</span>
+        </button>
+        
+        
+        <button class="action-button" onclick="window.location.href='/video'">
+            <i class="fas fa-video"></i>
+            <span>Video</span>
+        </button>
+    </div>
+    <div class="lab-list" id="labList"></div>
+    
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="map.js"></script>
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
+    <!-- Replace the old html2canvas script with this -->
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+</body>
+</html>

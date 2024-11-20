@@ -1,0 +1,528 @@
+/* Lab Finder styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* camera */
+/* Add these styles to styles.css */
+.screenshot-loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+/* Camera overlay styles */
+.camera-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 2000;
+}
+
+.camera-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#camera-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.camera-controls {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 2001;
+}
+
+.camera-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.8);
+    color: #f10d0d;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.camera-btn:hover {
+    background: white;
+    transform: scale(1.1);
+}
+
+/* Lab finder overlay styles */
+.lab-finder-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lab-finder-container {
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.lab-finder-header {
+    padding: 20px;
+    background: #f10d0d;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lab-finder-filters {
+    padding: 15px;
+    background: #f5f5f5;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter-select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    flex: 1;
+    min-width: 150px;
+}
+
+.range-filter {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lab-card {
+    background: white;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.lab-card h3 {
+    color: #f10d0d;
+    margin-bottom: 10px;
+}
+
+.lab-card p {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.lab-card-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.direction-btn,
+.details-btn {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+}
+
+.direction-btn {
+    background: #f10d0d;
+    color: white;
+}
+
+.details-btn {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.direction-btn:hover,
+.details-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .camera-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .lab-finder-container {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .filter-select {
+        width: 100%;
+    }
+
+    .lab-card-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .camera-controls {
+        bottom: 10px;
+    }
+
+    .lab-finder-container {
+        max-height: 95vh;
+    }
+}
+
+/* Leaflet zoom control positioning */
+.leaflet-control-zoom {
+    position: fixed !important;
+    right: 20px !important;
+    bottom: 100px !important; /* Positions it above the bottom buttons */
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    z-index: 1000;
+}
+
+/* Make zoom controls more touch-friendly */
+.leaflet-control-zoom a {
+    width: 40px !important;
+    height: 40px !important;
+    line-height: 40px !important;
+    font-size: 18px !important;
+    border-radius: 8px !important;
+    background-color: white !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2) !important;
+}
+
+/* Hover effect for zoom controls */
+.leaflet-control-zoom a:hover {
+    background-color: #f8f8f8 !important;
+}
+
+/* For mobile devices */
+@media (max-width: 768px) {
+    .leaflet-control-zoom {
+        right: 15px !important;
+        bottom: 120px !important;
+    }
+}
+.recent-searches {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.recent-search-item {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.recent-search-item:hover {
+    background-color: #f5f5f5;
+}
+
+
+/* Other existing styles... */
+
+/* Map container */
+#map {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+/* Search container */
+.search-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 90%;
+    max-width: 600px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.search-icon {
+    color: #666;
+    margin-right: 10px;
+    font-size: clamp(14px, 2vw, 16px);
+}
+
+#search {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 8px;
+    font-size: clamp(14px, 2vw, 16px);
+    background: transparent;
+    width: 100%;
+}
+
+.search-button {
+    background: #f10d0d;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: clamp(14px, 2vw, 16px);
+    white-space: nowrap;
+}
+
+/* Bottom buttons */
+.bottom-buttons {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    gap: clamp(10px, 2vw, 20px);
+    background: rgba(255, 255, 255, 0.9);
+    padding: clamp(10px, 2vw, 15px);
+    border-radius: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 600px;
+    justify-content: space-around;
+}
+
+.action-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    border: none;
+    padding: clamp(8px, 2vw, 12px);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    gap: 5px;
+    flex: 1;
+    max-width: 100px;
+}
+
+.action-button i {
+    font-size: clamp(16px, 3vw, 20px);
+    color: #fa0e0e;
+}
+
+.action-button span {
+    font-size: clamp(10px, 2vw, 12px);
+    color: #666;
+}
+
+/* Video page styles */
+.video-page {
+    min-height: 100vh;
+    padding: clamp(10px, 2vw, 20px);
+}
+
+.header {
+    padding: clamp(10px, 2vw, 20px);
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.header h1 {
+    font-size: clamp(18px, 4vw, 24px);
+}
+
+.video-container {
+    width: 100%;
+    height: calc(100vh - 200px);
+    margin-top: clamp(60px, 10vh, 80px);
+}
+
+#zoom-earth {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 768px) {
+    .search-container {
+        width: 95%;
+    }
+
+    .bottom-buttons {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .action-button {
+        padding: 8px;
+    }
+
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .back-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-box {
+        padding: 8px 12px;
+    }
+
+    .bottom-buttons {
+        gap: 5px;
+    }
+
+    .action-button {
+        min-width: auto;
+    }
+
+    .video-container {
+        height: calc(100vh - 160px);
+    }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+    .bottom-buttons {
+        bottom: 10px;
+    }
+
+    .action-button {
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    .video-container {
+        height: calc(100vh - 120px);
+    }
+}
+
+.lab-finder-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lab-finder-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.lab-finder-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.filter-select {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+}
+
+.range-filter {
+    margin: 15px 0;
+}
+
+.lab-list {
+    margin-top: 20px;
+}
