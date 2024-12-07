@@ -1,4 +1,4 @@
-# Lab Locator - Medical Laboratory Finder in Wah Cantt 🏥
+# Lab Locator - Medical Laboratory Finder 🏥
 
 ## Overview
 Lab Locator is a powerful web-based application that helps users find and connect with medical laboratories in Wah Cantt, Pakistan. The platform features real-time mapping, advanced filtering, and comprehensive laboratory information to streamline the process of finding medical testing facilities.
@@ -87,10 +87,10 @@ Lab Locator is a powerful web-based application that helps users find and connec
 - Patient Review System
 
 ## Contact Information
-Website: www.lablocator.com
-Email: info@lablocator.com
-Support: support@lablocator.com
-Phone: +92-51-XXXXXXX
+
+Email: usamahsnnn@gmail.com
+Support:
+Phone:
 
 ## Meta Tags
 medical labs, laboratory finder, diagnostic centers, Wah Cantt healthcare, medical testing, blood tests, PCR testing, laboratory services, emergency labs, healthcare facilities, medical diagnostics, pathology services, lab locations, medical centers, healthcare solutions
